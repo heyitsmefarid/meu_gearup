@@ -1,0 +1,99 @@
+<?php
+session_start();
+$supplier_name = $_SESSION['supplier_name'] ?? 'Supplier';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery Info | MEU GearUp</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="supply.css">
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <div class="logo">
+        <i class="ri-motorbike-line"></i>
+        <span>MEU GearUp</span>
+      </div>
+      <nav class="menu">
+        <a href="index.php"><i class="ri-dashboard-line"></i> Dashboard</a>
+        <a href="supply.php"><i class="ri-file-list-3-line"></i> Supply Requests</a>
+        <a href="delivery.php" class="active"><i class="ri-truck-line"></i> Delivery Info</a>
+        <a href="orders.php"><i class="ri-shopping-bag-3-line"></i> Orders</a>
+        <a href="inquiries.php"><i class="ri-message-3-line"></i> Inquiries</a>
+        <a href="logout.php"><i class="ri-logout-box-r-line"></i> Logout</a>
+      </nav>
+
+      <div class="theme-toggle">
+        <i class="fa-solid fa-sun"></i>
+        <i class="fa-solid fa-moon"></i>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content fade-up">
+    <div class="topbar">
+      <h2>Welcome, <span><?= htmlspecialchars($supplier_name) ?></span></h2>
+      <div class="avatar"><img src="https://cdn-icons-png.flaticon.com/512/921/921071.png" alt="Supplier Avatar"></div>
+    </div>
+
+    <!-- Delivery Information Section -->
+    <section class="dashboard-section fade-in">
+      <h3><i class="ri-truck-line"></i> Delivery Information</h3>
+      <p class="subtitle">Track and manage all deliveries, schedules, and shipment details.</p>
+
+      <div class="delivery-grid">
+        <!-- Delivery Card 1 -->
+        <div class="delivery-card gradient-blue fade-up">
+          <div class="icon"><i class="ri-roadster-line"></i></div>
+          <h4>Brake Pads - Batch #BP502</h4>
+          <p><strong>Delivery Date:</strong> Nov 3, 2025</p>
+          <p><strong>Status:</strong> En Route</p>
+          <p><strong>Driver:</strong> Juan Dela Cruz</p>
+          <p><strong>Tracking No.:</strong> TRK12345BP</p>
+          <span class="status transit"><i class="ri-truck-line"></i> On the Way</span>
+        </div>
+
+        <!-- Delivery Card 2 -->
+        <div class="delivery-card gradient-green fade-up">
+          <div class="icon"><i class="ri-gas-station-line"></i></div>
+          <h4>Engine Oil - Batch #EO301</h4>
+          <p><strong>Delivery Date:</strong> Nov 5, 2025</p>
+          <p><strong>Status:</strong> Scheduled</p>
+          <p><strong>Driver:</strong> Maria Santos</p>
+          <p><strong>Tracking No.:</strong> TRK67890EO</p>
+          <span class="status scheduled"><i class="ri-calendar-line"></i> Scheduled</span>
+        </div>
+
+        <!-- Delivery Card 3 -->
+        <div class="delivery-card gradient-purple fade-up">
+          <div class="icon"><i class="ri-tire-line"></i></div>
+          <h4>Tires - Batch #TR902</h4>
+          <p><strong>Delivery Date:</strong> Oct 25, 2025</p>
+          <p><strong>Status:</strong> Delivered</p>
+          <p><strong>Driver:</strong> Carlos Reyes</p>
+          <p><strong>Tracking No.:</strong> TRK55588TR</p>
+          <span class="status delivered"><i class="ri-check-line"></i> Delivered</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // 🌙 Dark Mode Toggle
+    const body = document.body;
+    const sun = document.querySelector('.fa-sun');
+    const moon = document.querySelector('.fa-moon');
+
+    moon.addEventListener('click', () => body.classList.add('dark-mode'));
+    sun.addEventListener('click', () => body.classList.remove('dark-mode'));
+  </script>
+</body>
+</html>

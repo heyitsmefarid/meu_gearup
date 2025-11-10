@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEU GearUp | User Dashboard</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <i class="ri-motorbike-line"></i>
+      <span>MEU GearUp</span>
+    </div>
+    <nav class="menu">
+      <a href="index.php" class="active"><i class="ri-dashboard-line"></i> Dashboard</a>
+       <a href="book.php"><i class="fa-solid fa-wrench"></i> Book Services</a>
+      <a href="browse.php"><i class="ri-shopping-bag-3-line"></i> Browse Parts</a>
+      <a href="repairs.php"><i class="ri-tools-line"></i> My Repairs</a>
+      <a href="emergency.php"><i class="ri-map-pin-line"></i> Roadside Request</a>
+       <a href="inquiry.php"><i class="ri-message-3-line"></i> Inquiries</a>
+      <a href="profile.php"><i class="ri-user-line"></i> Profile</a>
+      <a href="logout.php"><i class="ri-logout-box-line"></i> Logout</a>
+    </nav>
+    <div class="theme-toggle">
+      <i class="ri-sun-line" id="lightIcon"></i>
+      <i class="ri-moon-line" id="darkIcon"></i>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="topbar">
+      <div class="welcome fade-in">
+        <h2>Welcome back, <span>User!</span></h2>
+        <p>Here's your dashboard summary and latest updates.</p>
+      </div>
+      <div class="avatar fade-in">
+        <img src="https://i.pravatar.cc/60" alt="User Avatar">
+      </div>
+    </header>
+
+    <!-- Dashboard Cards -->
+    <section class="dashboard-grid">
+      <div class="card glow delay-1">
+        <i class="ri-wallet-3-line icon"></i>
+        <h3>Recent Purchases</h3>
+        <p>3 new transactions this week</p>
+      </div>
+
+      <div class="card glow delay-2">
+        <i class="ri-tools-fill icon"></i>
+        <h3>Repair Requests</h3>
+        <p>2 active repairs ongoing</p>
+      </div>
+
+      <div class="card glow delay-3">
+        <i class="ri-map-pin-2-line icon"></i>
+        <h3>Roadside Requests</h3>
+        <p>1 completed roadside assistance</p>
+      </div>
+
+      <div class="card glow delay-4">
+        <i class="ri-shopping-cart-2-line icon"></i>
+        <h3>Browse New Parts</h3>
+        <p>View new arrivals this week</p>
+      </div>
+    </section>
+
+    <!-- Recent Activity -->
+    <section class="recent-activity fade-up delay-5">
+      <h2><i class="ri-history-line"></i> Recent Activity</h2>
+      <ul>
+        <li><i class="ri-check-double-line"></i> Order #4512 completed - Oct 28</li>
+        <li><i class="ri-tools-fill"></i> Repair #390 assigned to Mechanic John</li>
+        <li><i class="ri-map-pin-line"></i> Roadside request completed successfully</li>
+        <li><i class="ri-shopping-basket-2-line"></i> Purchased “Yamaha Brake Pads”</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Script -->
+  <script>
+    const sidebar = document.querySelector('.sidebar');
+    const body = document.body;
+    const lightIcon = document.getElementById('lightIcon');
+    const darkIcon = document.getElementById('darkIcon');
+
+    // Theme toggle
+    lightIcon.addEventListener('click', () => {
+      body.classList.add('dark');
+    });
+    darkIcon.addEventListener('click', () => {
+      body.classList.remove('dark');
+    });
+
+    // Mobile sidebar toggle (press M)
+    document.addEventListener('keydown', e => {
+      if (e.key.toLowerCase() === 'm') sidebar.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<?php
+session_start();
+require "db_connect.php";
+$conn = connectDB();
+$email = $_POST['email'] ?? '';
+$password = $_POST['password'] ?? '';
+
+$stmt = $conn->prepare("SELECT * FROM user_tbl WHERE email = :email LIMIT 1");
+$stmt->bindParam(":email", $email);
+$stmt->execute();
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$user) {
+    $_SESSION['login_error'] = "notfound";
+    header("Location: login/index.php");
+    exit;
+}
+
+if (!password_verify($password, $user['password'])) {
+    $_SESSION['login_error'] = "wrongpass";
+    header("Location: login/index.php");
+    exit;
+}
+
+$_SESSION['user_id'] = $user['user_id'];
+$_SESSION['role'] = $user['role'];
+$_SESSION['login_success'] = "1";
+
+if ($user['role'] === 'Admin') {
+    header("Location: admin/index.php");
+
+} 
+
+else if ($user['role'] === 'Supplier') {
+    header("Location: supplier/index.php");
+    
+} 
+
+else if ($user['role'] === 'Mechanic') {
+    header("Location: mechanics/index.php");
+    
+} 
+else {
+    header("Location: user/index.php");
+}
+exit;

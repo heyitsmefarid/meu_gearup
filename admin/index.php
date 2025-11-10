@@ -1,0 +1,341 @@
+<?php
+session_start();
+
+// Simulated Admin Data
+$admin_name = "Admin User";
+$admin_email = "admin@meugearup.com";
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | MEU GearUp</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="indec.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .main-content {
+      margin-left: 270px;
+      padding: 40px;
+      background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+
+    .dashboard-header h1 {
+      color: #1e3a8a;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .dashboard-header span {
+      color: #2563eb;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(30, 41, 59, 0.08);
+      padding: 25px;
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+    }
+
+    .stat-card i {
+      font-size: 2.2rem;
+      color: #2563eb;
+      margin-bottom: 10px;
+    }
+
+    .stat-card h3 {
+      font-size: 1.8rem;
+      color: #1e3a8a;
+      margin-bottom: 5px;
+    }
+
+    .stat-card p {
+      color: #475569;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .charts-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .chart-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(30, 41, 59, 0.08);
+      padding: 20px;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .chart-card h3 {
+      color: #1e3a8a;
+      margin-bottom: 10px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .admin-info {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(30, 41, 59, 0.08);
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+
+    .info-card p {
+      font-size: 1rem;
+      margin: 8px 0;
+      color: #1e293b;
+    }
+
+    .recent-activity {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(30, 41, 59, 0.08);
+      padding: 25px;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .recent-activity table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .recent-activity th, .recent-activity td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .recent-activity th {
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .recent-activity tr:hover {
+      background: #f8fafc;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <i class="fas fa-tools"></i>
+      <span>MEU Admin</span>
+    </div>
+
+   <nav class="menu">
+      <a href="index.php"class="active"><i class="fas fa-home"></i> Dashboard</a>
+
+      <!-- Multi-Branch Control Panel -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-building"></i> Multi-Branch Control <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="view.php">View All Branches</a>
+         
+          <a href="performance.php">View Branch Performance</a>
+        </div>
+      </div>
+
+      <!-- Manage Users -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-users"></i> Manage Users <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="user.php">View User Details</a>
+          <a href="roles.php">Manage Roles (Supplier, Mechanic)</a>
+        </div>
+      </div>
+
+      <!-- Manage Inventory -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-boxes-stacked"></i> Manage Inventory <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="items.php">Add / Update / Delete Items</a>
+          <a href="stock.php">View Stock Levels (per Branch)</a>
+          <a href="transfer.php">Transfer Items Between Branches</a>
+        </div>
+      </div>
+
+      <!-- Assign Requests -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-tasks"></i> Assign Requests <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="suppliers.php">Assign to Suppliers (Parts / Materials)</a>
+          <a href="mechanics.php">Assign to Mechanics (Repair / Maintenance)</a>
+        </div>
+      </div>
+
+      <!-- Monitor Progress -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-chart-line"></i> Monitor Progress <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="updates.php">View Supplier Updates</a>
+          <a href="rewards.php">View Mechanic Reports</a>
+        </div>
+      </div>
+
+      <!-- POS -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-cash-register"></i> Point of Sale (POS) <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="branch_sales.php">Sales (per Branch)</a>
+          <a href="transactions.php">View Transactions / Receipts</a>
+          <a href="payments.php">Manage Discounts / Payments</a>
+          <a href="summary.php">Daily Sales Summary</a>
+        </div>
+      </div>
+
+      <!-- Reports & Analytics -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-chart-pie"></i> Reports & Analytics <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="inventory.php">Inventory Reports (per Branch / Overall)</a>
+          <a href="task.php">Task Completion Reports</a>
+          <a href="activity_logs.php">User Activity Logs</a>
+          <a href="mechanics_report.php">Mechanics Repair Reports</a>
+          <a href="sales_report.php">Sales Reports (Branch / Consolidated)</a>
+        </div>
+      </div>
+  <a href="response.php"><i class="fas fa-envelope"></i> Inquiries</a>
+      <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      <br>
+      <br>
+      <br>
+      <br>
+  </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="dashboard-header">
+      <h1>Welcome back, <span><?php echo $admin_name; ?></span> 👋</h1>
+      <p>Here’s your centralized control panel across all branches and departments.</p>
+    </header>
+
+    <!-- Stats Overview -->
+    <section class="stats-grid">
+      <div class="stat-card"><i class="fas fa-building"></i><h3>4</h3><p>Total Branches</p></div>
+      <div class="stat-card"><i class="fas fa-users"></i><h3>120</h3><p>Total Users</p></div>
+      <div class="stat-card"><i class="fas fa-box"></i><h3>980</h3><p>Items in Stock</p></div>
+      <div class="stat-card"><i class="fas fa-peso-sign"></i><h3>₱150k</h3><p>Today's Sales</p></div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="charts-container">
+      <div class="chart-card">
+        <h3>Branch Sales Overview</h3>
+        <canvas id="salesChart"></canvas>
+      </div>
+
+      <div class="chart-card">
+        <h3>Top Performing Mechanics</h3>
+        <canvas id="mechanicChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Recent Activity -->
+    <section class="recent-activity">
+      <h3><i class="fas fa-clock"></i> Recent Activity</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Activity</th>
+            <th>Branch</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>2025-10-30</td><td>Added 15 items to inventory</td><td>Main Branch</td><td>✅ Completed</td></tr>
+          <tr><td>2025-10-29</td><td>Transferred 5 parts to Branch 2</td><td>Branch 1</td><td>⚙️ In Progress</td></tr>
+          <tr><td>2025-10-29</td><td>Processed 3 repair requests</td><td>Branch 2</td><td>✅ Completed</td></tr>
+          <tr><td>2025-10-28</td><td>Supplier updated part delivery</td><td>Branch 2</td><td>📦 Pending</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Admin Info -->
+    <section class="admin-info">
+      <h2>Administrator Info</h2>
+      <div class="info-card">
+        <p><strong>Name:</strong> <?php echo $admin_name; ?></p>
+        <p><strong>Email:</strong> <?php echo $admin_email; ?></p>
+        <p><strong>Role:</strong> System Administrator</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Dropdown toggle logic
+    document.querySelectorAll('.dropdown-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        button.classList.toggle('active');
+        const dropdownContent = button.nextElementSibling;
+        dropdownContent.style.maxHeight = dropdownContent.style.maxHeight ? null : dropdownContent.scrollHeight + "px";
+      });
+    });
+
+    // Chart.js Sales Overview
+    const ctx = document.getElementById('salesChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Main Branch', 'Masipit', 'Baco'],
+        datasets: [{
+          label: '₱ Sales',
+          data: [52000, 42000, 38000, 36000],
+          backgroundColor: ['#2563eb', '#1e40af', '#3b82f6'],
+          borderRadius: 8,
+        }]
+      },
+      options: { responsive: true, plugins: { legend: { display: false } } }
+    });
+
+    // Chart.js Mechanic Performance
+    const ctx2 = document.getElementById('mechanicChart');
+    new Chart(ctx2, {
+      type: 'doughnut',
+      data: {
+        labels: ['John', 'Mark', 'Leo', 'Kyle'],
+        datasets: [{
+          data: [15, 12, 9, 6],
+          backgroundColor: ['#2563eb', '#1e40af', '#3b82f6', '#60a5fa']
+        }]
+      },
+      options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+    });
+  </script>
+</body>
+</html>

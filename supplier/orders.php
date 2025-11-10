@@ -1,0 +1,106 @@
+<?php
+session_start();
+$supplier_name = $_SESSION['supplier_name'] ?? 'Supplier';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supplier Orders</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="supply.css">
+ 
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <div class="logo">
+        <i class="ri-motorbike-line"></i>
+        <span>MEU GearUp</span>
+      </div>
+      <nav class="menu">
+        <a href="index.php"><i class="ri-dashboard-line"></i>Dashboard</a>
+        <a href="supply.php"><i class="ri-file-list-3-line"></i>Supply Requests</a>
+        <a href="delivery.php"><i class="ri-truck-line"></i>Delivery Info</a>
+        <a href="orders.php" class="active"><i class="ri-shopping-bag-3-line"></i>Orders</a>
+        <a href="inquiries.php"><i class="ri-message-3-line"></i>Inquiries</a>
+        <a href="logout.php"><i class="ri-logout-box-line"></i>Logout</a>
+      </nav>
+
+      <div class="theme-toggle">
+        <i class="ri-sun-line"></i>
+        <i class="ri-moon-line"></i>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content fade-up">
+    <div class="topbar">
+      <h2>Orders for <span><?= htmlspecialchars($supplier_name) ?></span></h2>
+      <div class="avatar"><img src="https://cdn-icons-png.flaticon.com/512/921/921071.png" alt="Supplier Avatar"></div>
+    </div>
+
+    <section class="orders-section fade-in">
+      <h3><i class="ri-shopping-bag-3-line"></i> Recent Orders</h3>
+      <p class="subtitle">Track and manage your order progress and delivery timelines.</p>
+
+      <div class="orders-grid">
+
+        <!-- Order Card 1 -->
+        <div class="order-card gradient-blue">
+          <div class="icon"><i class="ri-box-3-line"></i></div>
+          <h4>Order #1023</h4>
+          <p><strong>Item:</strong> Brake Pads</p>
+          <p><strong>Quantity:</strong> 40 sets</p>
+          <p><strong>Status:</strong> Pending</p>
+          <div class="progress-bar">
+            <div class="progress" style="width: 25%;"></div>
+          </div>
+          <span class="order-status pending">Pending</span>
+        </div>
+
+        <!-- Order Card 2 -->
+        <div class="order-card gradient-green">
+          <div class="icon"><i class="ri-tools-line"></i></div>
+          <h4>Order #1024</h4>
+          <p><strong>Item:</strong> Engine Oil</p>
+          <p><strong>Quantity:</strong> 120 liters</p>
+          <p><strong>Status:</strong> In Progress</p>
+          <div class="progress-bar">
+            <div class="progress" style="width: 65%;"></div>
+          </div>
+          <span class="order-status progress">In Progress</span>
+        </div>
+
+        <!-- Order Card 3 -->
+        <div class="order-card gradient-purple">
+          <div class="icon"><i class="ri-tire-line"></i></div>
+          <h4>Order #1025</h4>
+          <p><strong>Item:</strong> Tires</p>
+          <p><strong>Quantity:</strong> 50 pcs</p>
+          <p><strong>Status:</strong> Completed</p>
+          <div class="progress-bar">
+            <div class="progress" style="width: 100%;"></div>
+          </div>
+          <span class="order-status completed">Completed</span>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const body = document.body;
+    const sun = document.querySelector('.ri-sun-line');
+    const moon = document.querySelector('.ri-moon-line');
+
+    moon.addEventListener('click', () => body.classList.add('dark-mode'));
+    sun.addEventListener('click', () => body.classList.remove('dark-mode'));
+  </script>
+
+</body>
+</html>

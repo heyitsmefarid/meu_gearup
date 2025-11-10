@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POS Transactions | MEU Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="branch.css">
+  <style>
+    .main-content {
+      margin-left: 270px;
+      padding: 40px;
+      background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+
+    .transactions-container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(30, 41, 59, 0.08);
+      padding: 30px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    h1 {
+      color: #1e3a8a;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    h1 i {
+      color: #2563eb;
+    }
+
+    .transactions-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .transactions-table th,
+    .transactions-table td {
+      padding: 14px;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    .transactions-table th {
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      color: white;
+      font-weight: 600;
+    }
+
+    .transactions-table tr:hover {
+      background: #f1f5f9;
+      transition: 0.3s;
+    }
+
+    .view-btn {
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .view-btn:hover {
+      background: #1e40af;
+      transform: translateY(-2px);
+    }
+
+    .status {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .paid {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .pending {
+      background: #fef9c3;
+      color: #854d0e;
+    }
+
+    .canceled {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .filter-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .filter-bar select,
+    .filter-bar input {
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    .filter-bar select:focus,
+    .filter-bar input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 2px rgba(37,99,235,0.15);
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <i class="fas fa-chart-line"></i>
+      <span>MEU Admin</span>
+    </div>
+
+    <nav class="menu">
+      <a href="index.php"><i class="fas fa-home"></i> Dashboard</a>
+
+      <!-- Multi-Branch Control Panel -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-building"></i> Multi-Branch Control <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="view.php">View All Branches</a>
+         
+          <a href="performance.php">View Branch Performance</a>
+        </div>
+      </div>
+
+      <!-- Manage Users -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-users"></i> Manage Users <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="user.php">View User Details</a>
+          <a href="roles.php">Manage Roles (Supplier, Mechanic)</a>
+        </div>
+      </div>
+
+      <!-- Manage Inventory -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-boxes-stacked"></i> Manage Inventory <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="items.php">Add / Update / Delete Items</a>
+          <a href="stock.php">View Stock Levels (per Branch)</a>
+          <a href="transfer.php">Transfer Items Between Branches</a>
+        </div>
+      </div>
+
+      <!-- Assign Requests -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-tasks"></i> Assign Requests <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="suppliers.php">Assign to Suppliers (Parts / Materials)</a>
+          <a href="mechanics.php">Assign to Mechanics (Repair / Maintenance)</a>
+        </div>
+      </div>
+
+      <!-- Monitor Progress -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-chart-line"></i> Monitor Progress <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="updates.php">View Supplier Updates</a>
+          <a href="rewards.php">View Mechanic Reports</a>
+        </div>
+      </div>
+
+      <!-- POS -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-cash-register"></i> Point of Sale (POS) <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="branch_sales.php">Sales (per Branch)</a>
+          <a href="transactions.php"class = "active">View Transactions / Receipts</a>
+          <a href="payments.php">Manage Discounts / Payments</a>
+          <a href="#">Daily Sales Summary</a>
+        </div>
+      </div>
+
+      <!-- Reports & Analytics -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-chart-pie"></i> Reports & Analytics <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="inventory.php">Inventory Reports (per Branch / Overall)</a>
+          <a href="task.php">Task Completion Reports</a>
+          <a href="activity_logs.php">User Activity Logs</a>
+          <a href="mechanics_report.php">Mechanics Repair Reports</a>
+          <a href="sales_report.php">Sales Reports (Branch / Consolidated)</a>
+        </div>
+      </div>
+<a href="response.php"><i class="fas fa-envelope"></i> Inquiries</a>
+      <a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      <br>
+      <br>
+      <br>
+      <br>
+  </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="transactions-container">
+      <h1><i class="fas fa-receipt"></i> POS Transactions / Receipts</h1>
+
+      <div class="filter-bar">
+        <div>
+          <label for="branch">Filter by Branch:</label>
+          <select id="branch">
+            <option>All Branches</option>
+            <option>Main Branch</option>
+            <option>Branch 1</option>
+            <option>Branch 2</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="date">Filter by Date:</label>
+          <input type="date" id="date">
+        </div>
+      </div>
+
+      <table class="transactions-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Transaction ID</th>
+            <th>Branch</th>
+            <th>Items Sold</th>
+            <th>Total</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Receipt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>TXN-1001</td>
+            <td>Main Branch</td>
+            <td>Brake Pads (2), Engine Oil (1)</td>
+            <td>₱2,350.00</td>
+            <td>2025-10-29</td>
+            <td><span class="status paid">Paid</span></td>
+            <td><button class="view-btn"><i class="fas fa-eye"></i> View</button></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>TXN-1002</td>
+            <td>Branch 1</td>
+            <td>Air Filter (1)</td>
+            <td>₱450.00</td>
+            <td>2025-10-30</td>
+            <td><span class="status pending">Pending</span></td>
+            <td><button class="view-btn"><i class="fas fa-eye"></i> View</button></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>TXN-1003</td>
+            <td>Branch 2</td>
+            <td>Oil Filter (3), Spark Plug (2)</td>
+            <td>₱1,250.00</td>
+            <td>2025-10-30</td>
+            <td><span class="status canceled">Canceled</span></td>
+            <td><button class="view-btn"><i class="fas fa-eye"></i> View</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  
+  <script>
+    // Dropdown toggle logic
+    document.querySelectorAll('.dropdown-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        button.classList.toggle('active');
+        const dropdownContent = button.nextElementSibling;
+
+        if (dropdownContent.style.maxHeight) {
+          dropdownContent.style.maxHeight = null;
+        } else {
+          dropdownContent.style.maxHeight = dropdownContent.scrollHeight + "px";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
