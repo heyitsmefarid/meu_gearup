@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Repairs | MEU GearUp</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="repairs.css">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <div class="logo">
+        <i class="ri-tools-line"></i>
+        <span>MEU GearUp</span>
+      </div>
+
+      <nav class="menu">
+        <a href="index.html"><i class="ri-dashboard-line"></i> Dashboard</a>
+        <a href="book.html"><i class="fa-solid fa-wrench"></i> Book Services</a>
+        <a href="browse.html"><i class="ri-shopping-bag-3-line"></i> Browse Parts</a>
+        <a href="repairs.html" class="active"><i class="ri-tools-line"></i> My Repairs</a>
+        <a href="emergency.html"><i class="ri-map-pin-line"></i> Roadside Request</a>
+        <a href="inquiry.html"><i class="ri-message-3-line"></i> Inquiries</a>
+        <a href="profile.html"><i class="ri-user-line"></i> Profile</a>
+        <a href="logout.html"><i class="ri-logout-box-line"></i> Logout</a>
+      </nav>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" aria-hidden="false" role="button" title="Toggle Theme">
+      <i class="ri-sun-line" id="theme-sun"></i>
+      <i class="ri-moon-line" id="theme-moon"></i>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="topbar">
+      <h2>My <span>Repairs</span></h2>
+      <div class="avatar">
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Avatar">
+      </div>
+    </div>
+
+    <section class="repairs-section fade-up">
+      <h3><i class="ri-check-double-line"></i> Successful Repair Services</h3>
+      <p class="subtitle">Here are your recently completed service requests.</p>
+
+      <div class="repairs-grid">
+                              <div class="repair-card fade-in">
+              <div class="icon"><i class="ri-tools-line"></i></div>
+              <h4>Emergency Repair</h4>
+              <p><strong>Date Completed:</strong> November 3, 2025</p>
+              <p><strong>Time:</strong> </p>
+              <p><strong>Mechanic:</strong> Mechanic 1 Mechanic 1</p>
+              <span class="status completed">Completed</span>
+            </div>
+                      <div class="repair-card fade-in">
+              <div class="icon"><i class="ri-tools-line"></i></div>
+              <h4>Emergency Repair</h4>
+              <p><strong>Date Completed:</strong> November 2, 2025</p>
+              <p><strong>Time:</strong> </p>
+              <p><strong>Mechanic:</strong> Mechanic 1 Mechanic 1</p>
+              <span class="status completed">Completed</span>
+            </div>
+                      <div class="repair-card fade-in">
+              <div class="icon"><i class="ri-tools-line"></i></div>
+              <h4>Emergency Repair</h4>
+              <p><strong>Date Completed:</strong> November 2, 2025</p>
+              <p><strong>Time:</strong> </p>
+              <p><strong>Mechanic:</strong> Mechanic 1 Mechanic 1</p>
+              <span class="status completed">Completed</span>
+            </div>
+                      <div class="repair-card fade-in">
+              <div class="icon"><i class="ri-tools-line"></i></div>
+              <h4>maintenance</h4>
+              <p><strong>Date Completed:</strong> November 1, 2025</p>
+              <p><strong>Time:</strong> 10:30:00</p>
+              <p><strong>Mechanic:</strong> Mechanic 1 Mechanic 1</p>
+              <span class="status completed">Completed</span>
+            </div>
+                        </div>
+    </section>
+  </main>
+
+  <!-- Theme Toggle Script -->
+  <script>
+  (function(){
+    const themeToggle = document.querySelector('.theme-toggle');
+    const sun = document.getElementById('theme-sun');
+    const moon = document.getElementById('theme-moon');
+    const body = document.body;
+    const STORAGE_KEY = 'meu_theme';
+
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if(saved === 'dark') body.classList.add('dark');
+    if(saved === 'light') body.classList.remove('dark');
+
+    function updateIcons() {
+      if(body.classList.contains('dark')) {
+        sun.style.opacity = '1';
+        moon.style.opacity = '0.4';
+      } else {
+        sun.style.opacity = '0.4';
+        moon.style.opacity = '1';
+      }
+    }
+    updateIcons();
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      localStorage.setItem(STORAGE_KEY, body.classList.contains('dark') ? 'dark' : 'light');
+      updateIcons();
+    });
+  })();
+  </script>
+<script src="../demo.js"></script>
+</body>
+</html>

@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include 'includes/head.php'?>;
+<?php include 'includes/head.php'?>
 
 <body class="index-page">
 
-<?php include 'includes/header.php'?>;
+<?php include 'includes/header.php'?>
 
 
   <main class="main">
 
     <!-- Hero Section -->
-<?php include 'includes/hero_section.php'?>;
+<?php include 'includes/hero_section.php'?>
     <!-- Home About Section -->
 
-<?php include 'includes/about_section.php'?>;
+<?php include 'includes/about_section.php'?>
     <!-- Featured Departments Section -->
 
     <!-- Featured Services Section -->
 
-<?php include 'includes/services_section.php'?>;
+<?php include 'includes/services_section.php'?>
     <!-- Find A Doctor Section -->
-  <?php include 'includes/mechanic.php'?>;
+  <?php include 'includes/mechanic.php'?>
     <!-- Emergency Info Section -->
-<?php include 'includes/emergency_section.php'?>;
-<?php include 'includes/contact.php'?>;
+<?php include 'includes/emergency_section.php'?>
+<?php include 'includes/contact.php'?>
   </main>
 
-<?php include 'includes/footer.php'?>;
+<?php include 'includes/footer.php'?>
 
 
   <!-- Scroll Top -->

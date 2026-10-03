@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ongoing Repairs | Mechanic Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="repairs.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <div class="logo">
+        <i class="ri-tools-line"></i>
+        <span>MEU GearUp</span>
+      </div>
+      <nav class="menu">
+        <a href="index.html"><i class="ri-dashboard-line"></i> Dashboard</a>
+        <a href="jobs.html"><i class="ri-briefcase-line"></i> Assigned Jobs</a>
+        <a href="repairs.html" class="active"><i class="ri-tools-line"></i> Ongoing Repairs</a>
+        <a href="completed.html"><i class="ri-check-double-line"></i> Completed Tasks</a>
+        <a href="logout.html"><i class="ri-logout-box-line"></i> Logout</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Main Section -->
+  <main>
+    <header class="page-header fade-in">
+      <h2><i class="ri-tools-line"></i> Ongoing Repairs</h2>
+      <button class="btn-refresh" onclick="location.reload()">
+        <i class="ri-refresh-line"></i> Refresh
+      </button>
+    </header>
+
+          <div class="repair-grid fade-up">
+                  <div class="repair-card slide-up">
+            <div class="repair-header">
+              <h3><i class="ri-car-line"></i> Yamaha</h3>
+            </div>
+
+            <div class="repair-body">
+              <p><strong>Customer:</strong> FRED ANTHONY GALLANO</p>
+              <p><strong>Service Type:</strong> electrical</p>
+              <p><strong>Issue:</strong> xsxx</p>
+              <p><strong>Date:</strong> 2025-11-01</p>
+              <p><strong>Cost:</strong> ₱0.00</p>
+            </div>
+
+            <div class="status-tag">
+              <i class="ri-loader-4-line spin"></i> In Progress            </div>
+          </div>
+                  <div class="repair-card slide-up">
+            <div class="repair-header">
+              <h3><i class="ri-car-line"></i> Ducate</h3>
+            </div>
+
+            <div class="repair-body">
+              <p><strong>Customer:</strong> FRED ANTHONY GALLANO</p>
+              <p><strong>Service Type:</strong> engine</p>
+              <p><strong>Issue:</strong> invisible</p>
+              <p><strong>Date:</strong> 2025-11-01</p>
+              <p><strong>Cost:</strong> ₱0.00</p>
+            </div>
+
+            <div class="status-tag">
+              <i class="ri-loader-4-line spin"></i> In Progress            </div>
+          </div>
+              </div>
+      </main>
+
+<script src="../demo.js"></script>
+</body>
+</html>

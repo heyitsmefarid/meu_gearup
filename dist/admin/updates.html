@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Supplier Updates | MEU Admin</title>
+  <link rel="stylesheet" href="updates.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <i class="fas fa-industry"></i>
+      <span>MEU Admin</span>
+    </div>
+
+   <nav class="menu">
+      <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+
+      <!-- Multi-Branch Control Panel -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-building"></i> Multi-Branch Control <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="view.html">View All Branches</a>
+         
+          <a href="performance.html">View Branch Performance</a>
+        </div>
+      </div>
+
+      <!-- Manage Users -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-users"></i> Manage Users <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="user.html">View User Details</a>
+          <a href="roles.html">Manage Roles (Supplier, Mechanic)</a>
+        </div>
+      </div>
+
+      <!-- Manage Inventory -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-boxes-stacked"></i> Manage Inventory <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="items.html">Add / Update / Delete Items</a>
+          <a href="stock.html">View Stock Levels (per Branch)</a>
+          <a href="transfer.html">Transfer Items Between Branches</a>
+        </div>
+      </div>
+
+      <!-- Assign Requests -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-tasks"></i> Assign Requests <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="suppliers.html">Assign to Suppliers (Parts / Materials)</a>
+          <a href="mechanics.html">Assign to Mechanics (Repair / Maintenance)</a>
+        </div>
+      </div>
+
+      <!-- Monitor Progress -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-chart-line"></i> Monitor Progress <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="updates.html"class="active">View Supplier Updates</a>
+          <a href="rewards.html">View Mechanic Reports</a>
+        </div>
+      </div>
+
+      <!-- POS -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-cash-register"></i> Point of Sale (POS) <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="branch_sales.html">Sales (per Branch)</a>
+          <a href="transactions.html">View Transactions / Receipts</a>
+          <a href="payments.html">Manage Discounts / Payments</a>
+          <a href="summary.html">Daily Sales Summary</a>
+        </div>
+      </div>
+
+      <!-- Reports & Analytics -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-chart-pie"></i> Reports & Analytics <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="inventory.html">Inventory Reports (per Branch / Overall)</a>
+          <a href="task.html">Task Completion Reports</a>
+          <a href="activity_logs.html">User Activity Logs</a>
+          <a href="mechanics_report.html">Mechanics Repair Reports</a>
+          <a href="sales_report.html">Sales Reports (Branch / Consolidated)</a>
+        </div>
+      </div>
+<a href="response.html"><i class="fas fa-envelope"></i> Inquiries</a>
+      <a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      <br>
+      <br>
+      <br>
+      <br>
+  </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="header">
+      <h1><i class="fas fa-truck"></i> Supplier Delivery Updates</h1>
+    </header>
+
+    <section class="updates-section">
+      <div class="filter-bar">
+        <input type="text" placeholder="Search supplier or item..." class="search-input">
+        <select class="status-filter">
+          <option value="">All Statuses</option>
+          <option value="Delivered">Delivered</option>
+          <option value="Pending">Pending</option>
+          <option value="Delayed">Delayed</option>
+        </select>
+        <button class="btn-refresh"><i class="fas fa-sync-alt"></i> Refresh</button>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Supplier</th>
+              <th>Item</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>1</td>
+                <td>AutoParts Co.</td>
+                <td>Brake Pads</td>
+                <td><span class="status delivered">Delivered</span></td>
+                <td>2025-10-28</td>
+                <td>Delivered on schedule.</td>
+              </tr>
+                          <tr>
+                <td>2</td>
+                <td>EnginePro Supplies</td>
+                <td>Oil Filters</td>
+                <td><span class="status pending">Pending</span></td>
+                <td>2025-11-02</td>
+                <td>Awaiting shipment confirmation.</td>
+              </tr>
+                          <tr>
+                <td>3</td>
+                <td>CarWorks Distribution</td>
+                <td>Engine Belts</td>
+                <td><span class="status delayed">Delayed</span></td>
+                <td>2025-10-25</td>
+                <td>Delivery delayed due to transport issue.</td>
+              </tr>
+                          <tr>
+                <td>4</td>
+                <td>Speedy Motors</td>
+                <td>Suspension Parts</td>
+                <td><span class="status delivered">Delivered</span></td>
+                <td>2025-10-29</td>
+                <td>Partial delivery completed.</td>
+              </tr>
+                      </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.dropdown-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+        const content = btn.nextElementSibling;
+        content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
+      });
+    });
+  </script>
+
+<script src="../demo.js"></script>
+</body>
+</html>

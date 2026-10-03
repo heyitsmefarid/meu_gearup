@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mechanic Reports & Rewards | MEU Admin</title>
+  <link rel="stylesheet" href="rewards.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <i class="fas fa-cogs"></i>
+      <span>MEU Admin</span>
+    </div>
+
+      <nav class="menu">
+      <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+
+      <!-- Multi-Branch Control Panel -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-building"></i> Multi-Branch Control <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="view.html">View All Branches</a>
+         
+          <a href="performance.html">View Branch Performance</a>
+        </div>
+      </div>
+
+      <!-- Manage Users -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-users"></i> Manage Users <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="user.html">View User Details</a>
+          <a href="roles.html">Manage Roles (Supplier, Mechanic)</a>
+        </div>
+      </div>
+
+      <!-- Manage Inventory -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-boxes-stacked"></i> Manage Inventory <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="items.html">Add / Update / Delete Items</a>
+          <a href="stock.html">View Stock Levels (per Branch)</a>
+          <a href="transfer.html">Transfer Items Between Branches</a>
+        </div>
+      </div>
+
+      <!-- Assign Requests -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-tasks"></i> Assign Requests <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="suppliers.html">Assign to Suppliers (Parts / Materials)</a>
+          <a href="mechanics.html">Assign to Mechanics (Repair / Maintenance)</a>
+        </div>
+      </div>
+
+      <!-- Monitor Progress -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-chart-line"></i> Monitor Progress <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="updates.html">View Supplier Updates</a>
+          <a href="rewards.html"class="active">View Mechanic Reports</a>
+        </div>
+      </div>
+
+      <!-- POS -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-cash-register"></i> Point of Sale (POS) <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="branch_sales.html">Sales (per Branch)</a>
+          <a href="transactions.html">View Transactions / Receipts</a>
+          <a href="payments.html">Manage Discounts / Payments</a>
+          <a href="summary.html">Daily Sales Summary</a>
+        </div>
+      </div>
+
+      <!-- Reports & Analytics -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-chart-pie"></i> Reports & Analytics <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="inventory.html">Inventory Reports (per Branch / Overall)</a>
+          <a href="task.html">Task Completion Reports</a>
+          <a href="activity_logs.html">User Activity Logs</a>
+          <a href="mechanics_report.html">Mechanics Repair Reports</a>
+          <a href="sales_report.html">Sales Reports (Branch / Consolidated)</a>
+        </div>
+      </div>
+<a href="response.html"><i class="fas fa-envelope"></i> Inquiries</a>
+      <a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      <br>
+      <br>
+      <br>
+      <br>
+  </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="header">
+      <h1><i class="fas fa-wrench"></i> Mechanic Reports & Reward System</h1>
+      <p>Each 10 completed repairs = ₱100 bonus reward</p>
+    </header>
+
+    <section class="rewards-section">
+      <div class="filter-bar">
+        <input type="text" placeholder="Search mechanic..." class="search-input">
+        <button class="btn-refresh"><i class="fas fa-sync-alt"></i> Refresh</button>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Mechanic Name</th>
+              <th>Branch</th>
+              <th>Completed Repairs</th>
+              <th>Reward</th>
+              <th>Performance</th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>1</td>
+                <td>John Cruz</td>
+                <td>Main Branch</td>
+                <td>37</td>
+                <td>₱300.00</td>
+                <td>
+                  <div class="progress-bar">
+                    <div class="progress" style="width: 74%;"></div>
+                  </div>
+                </td>
+              </tr>
+                          <tr>
+                <td>2</td>
+                <td>Rico Dela Vega</td>
+                <td>Branch 1</td>
+                <td>22</td>
+                <td>₱200.00</td>
+                <td>
+                  <div class="progress-bar">
+                    <div class="progress" style="width: 44%;"></div>
+                  </div>
+                </td>
+              </tr>
+                          <tr>
+                <td>3</td>
+                <td>Arnold Reyes</td>
+                <td>Branch 2</td>
+                <td>15</td>
+                <td>₱100.00</td>
+                <td>
+                  <div class="progress-bar">
+                    <div class="progress" style="width: 30%;"></div>
+                  </div>
+                </td>
+              </tr>
+                          <tr>
+                <td>4</td>
+                <td>Benjie Santos</td>
+                <td>Branch 2</td>
+                <td>5</td>
+                <td>₱0.00</td>
+                <td>
+                  <div class="progress-bar">
+                    <div class="progress" style="width: 10%;"></div>
+                  </div>
+                </td>
+              </tr>
+                          <tr>
+                <td>5</td>
+                <td>Marvin Dela Cruz</td>
+                <td>Main Branch</td>
+                <td>40</td>
+                <td>₱400.00</td>
+                <td>
+                  <div class="progress-bar">
+                    <div class="progress" style="width: 80%;"></div>
+                  </div>
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  
+  <script>
+    // Dropdown toggle logic
+    document.querySelectorAll('.dropdown-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        button.classList.toggle('active');
+        const dropdownContent = button.nextElementSibling;
+
+        if (dropdownContent.style.maxHeight) {
+          dropdownContent.style.maxHeight = null;
+        } else {
+          dropdownContent.style.maxHeight = dropdownContent.scrollHeight + "px";
+        }
+      });
+    });
+  </script>
+
+<script src="../demo.js"></script>
+</body>
+</html>

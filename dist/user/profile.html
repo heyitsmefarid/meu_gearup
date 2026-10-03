@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile | MEU GearUp</title>
+  <link rel="stylesheet" href="profile.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ 
+
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <div class="logo">
+        <i class="ri-tools-line"></i>
+        <span>MEU GearUp</span>
+      </div>
+
+      <nav class="menu">
+        <a href="index.html"><i class="ri-dashboard-line"></i> Dashboard</a>
+        <a href="browse.html"><i class="ri-shopping-bag-3-line"></i> Browse Parts</a>
+        <a href="book.html"><i class="ri-calendar-check-line"></i> Book Services</a>
+        <a href="repairs.html"><i class="ri-wrench-line"></i> My Repairs</a>
+       
+        <a href="emergency.html"><i class="ri-roadster-line"></i> Emergency</a>
+          <a href="inquiry.html"><i class="ri-message-3-line"></i> Inquiries</a>
+        <a href="profile.html" class="active"><i class="ri-user-line"></i> My Profile</a>
+         <a href="logout.html"><i class="ri-logout-box-line"></i> Logout</a>
+      </nav>
+    </div>
+
+    <div class="theme-toggle">
+      <i class="ri-sun-line" id="theme-sun"></i>
+      <i class="ri-moon-line" id="theme-moon"></i>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="topbar">
+      <h2><span>My</span> Profile</h2>
+      <div class="avatar">
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Avatar">
+      </div>
+    </div>
+
+    <section class="profile-section fade-up">
+      <div class="profile-card fade-in">
+        <div class="profile-header">
+          <div class="profile-photo">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile Photo">
+          </div>
+          <h3>FRED ANTHONY GALLANO</h3>
+          <p class="role">Customer</p>
+        </div>
+
+        <form method="POST" class="profile-form" id="profileForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" name="first_name" value="FRED ANTHONY" required>
+            </div>
+            <div class="form-group">
+              <label>Middle Initial</label>
+              <input type="text" name="middle_initial" maxlength="5" value="C">
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" name="last_name" value="GALLANO" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email (non-editable)</label>
+              <input type="email" name="email" value="faridxzc1@gmail.com" readonly>
+            </div>
+            <div class="form-group">
+              <label>Contact Number</label>
+              <input type="text" name="contact_number" value="09123456789">
+            </div>
+          </div>
+
+          <h4>Change Password</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label>New Password</label>
+              <input type="password" id="password" name="password" placeholder="Enter new password (optional)">
+            </div>
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-enter new password">
+            </div>
+          </div>
+
+          <h4>Address Information</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Street</label>
+              <input type="text" name="street" value="Banaba" required>
+            </div>
+            <div class="form-group">
+              <label>Barangay</label>
+              <input type="text" name="barangay" value="Managpi" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" name="city" value="Calapan City" required>
+            </div>
+            <div class="form-group">
+              <label>Province</label>
+              <input type="text" name="province" value="Oriental Mindoro" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-update">
+            <i class="ri-save-3-line"></i> Save Changes
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- SweetAlert Feedback -->
+  
+  <!-- JS Theme Toggle -->
+  <script>
+  (function(){
+    const themeToggle = document.querySelector('.theme-toggle');
+    const sun = document.getElementById('theme-sun');
+    const moon = document.getElementById('theme-moon');
+    const body = document.body;
+    const STORAGE_KEY = 'meu_theme';
+
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if(saved === 'dark') body.classList.add('dark');
+    if(saved === 'light') body.classList.remove('dark');
+
+    function updateIcons() {
+      sun.style.opacity = body.classList.contains('dark') ? '1' : '0.4';
+      moon.style.opacity = body.classList.contains('dark') ? '0.4' : '1';
+    }
+    updateIcons();
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      localStorage.setItem(STORAGE_KEY, body.classList.contains('dark') ? 'dark' : 'light');
+      updateIcons();
+    });
+  })();
+  </script>
+<script src="../demo.js"></script>
+</body>
+</html>

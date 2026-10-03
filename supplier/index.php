@@ -26,7 +26,7 @@ $supplier_name = $_SESSION['supplier_name'] ?? 'Supplier';
       </div>
 
       <nav class="menu">
-        <a href="supplier_dashboard.php" class="active"><i class="ri-dashboard-line"></i> Dashboard</a>
+        <a href="index.php" class="active"><i class="ri-dashboard-line"></i> Dashboard</a>
         <a href="supply.php"><i class="ri-file-list-3-line"></i> Supply Requests</a>
         <a href="delivery.php"><i class="ri-truck-line"></i> Delivery Info</a>
         <a href="orders.php"><i class="ri-shopping-bag-3-line"></i> Orders</a>

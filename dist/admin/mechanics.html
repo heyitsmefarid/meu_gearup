@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assign to Mechanics | MEU Admin</title>
+  <link rel="stylesheet" href="mechanics.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <i class="fas fa-wrench"></i>
+      <span>MEU Admin</span>
+    </div>
+
+   <nav class="menu">
+      <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+
+      <!-- Multi-Branch Control Panel -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-building"></i> Multi-Branch Control <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="view.html">View All Branches</a>
+         
+          <a href="performance.html">View Branch Performance</a>
+        </div>
+      </div>
+
+      <!-- Manage Users -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-users"></i> Manage Users <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="user.html">View User Details</a>
+          <a href="roles.html">Manage Roles (Supplier, Mechanic)</a>
+        </div>
+      </div>
+
+      <!-- Manage Inventory -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-boxes-stacked"></i> Manage Inventory <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="items.html">Add / Update / Delete Items</a>
+          <a href="stock.html">View Stock Levels (per Branch)</a>
+          <a href="transfer.html">Transfer Items Between Branches</a>
+        </div>
+      </div>
+
+      <!-- Assign Requests -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-tasks"></i> Assign Requests <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="suppliers.html">Assign to Suppliers (Parts / Materials)</a>
+          <a href="mechanics.html" class = "active" >Assign to Mechanics (Repair / Maintenance)</a>
+            <a href="emergency.html">Emergency Assign</a>
+        </div>
+      </div>
+
+      <!-- Monitor Progress -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-chart-line"></i> Monitor Progress <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="updates.html">View Supplier Updates</a>
+          <a href="rewards.html">View Mechanic Reports</a>
+        </div>
+      </div>
+
+      <!-- POS -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-cash-register"></i> Point of Sale (POS) <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="branch_sales.html">Sales (per Branch)</a>
+          <a href="transactions.html">View Transactions / Receipts</a>
+          <a href="payments.html">Manage Discounts / Payments</a>
+          <a href="summary.html">Daily Sales Summary</a>
+        </div>
+      </div>
+
+      <!-- Reports & Analytics -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-chart-pie"></i> Reports & Analytics <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="inventory.html">Inventory Reports (per Branch / Overall)</a>
+          <a href="task.html">Task Completion Reports</a>
+          <a href="activity_logs.html">User Activity Logs</a>
+          <a href="mechanics_report.html">Mechanics Repair Reports</a>
+          <a href="sales_report.html">Sales Reports (Branch / Consolidated)</a>
+        </div>
+      </div>
+<a href="response.html"><i class="fas fa-envelope"></i> Inquiries</a>
+      <a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      <br>
+      <br>
+      <br>
+      <br>
+  </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="header">
+      <h1><i class="fas fa-screwdriver-wrench"></i> Assign Repair / Maintenance Tasks to Mechanics</h1>
+    </header>
+
+    <!-- Assigned Tasks Table -->
+    <section class="table-container">
+      <h2><i class="fas fa-list-check"></i> Pending and Active Repairs</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Vehicle Model</th>
+            <th>Service Type</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Assign Mechanic</th>
+          </tr>
+        </thead>
+        <tbody>
+                                    <tr>
+                <td>Fred FARID</td>
+                <td>MIO I 125</td>
+                <td>maintenance</td>
+                <td>2025-10-29</td>
+                <td>04:10:00</td>
+                <td><span class="status completed">Completed</span></td>
+                <td>
+                  <form class="assignForm">
+                    <input type="hidden" name="repair_id" value="11">
+                    <select name="mechanic_id" required>
+                      <option value="">Select Mechanic</option>
+                                              <option value="4" selected>
+                          Mechanic 1 Mechanic 1                        </option>
+                                          </select>
+                    <button type="submit" class="btn-assign"><i class="fas fa-check"></i></button>
+                  </form>
+                </td>
+              </tr>
+                          <tr>
+                <td>Fred Gallano</td>
+                <td>Scooter</td>
+                <td>electrical</td>
+                <td>2025-11-03</td>
+                <td>11:30:00</td>
+                <td><span class="status pending">Pending</span></td>
+                <td>
+                  <form class="assignForm">
+                    <input type="hidden" name="repair_id" value="10">
+                    <select name="mechanic_id" required>
+                      <option value="">Select Mechanic</option>
+                                              <option value="4" >
+                          Mechanic 1 Mechanic 1                        </option>
+                                          </select>
+                    <button type="submit" class="btn-assign"><i class="fas fa-check"></i></button>
+                  </form>
+                </td>
+              </tr>
+                          <tr>
+                <td>FRED ANTHONY GALLANO</td>
+                <td>motor</td>
+                <td>engine</td>
+                <td>2025-11-03</td>
+                <td>18:30:00</td>
+                <td><span class="status pending">Pending</span></td>
+                <td>
+                  <form class="assignForm">
+                    <input type="hidden" name="repair_id" value="9">
+                    <select name="mechanic_id" required>
+                      <option value="">Select Mechanic</option>
+                                              <option value="4" >
+                          Mechanic 1 Mechanic 1                        </option>
+                                          </select>
+                    <button type="submit" class="btn-assign"><i class="fas fa-check"></i></button>
+                  </form>
+                </td>
+              </tr>
+                          <tr>
+                <td>Mechanic 1 Mechanic 1</td>
+                <td>motor</td>
+                <td>maintenance</td>
+                <td>2025-11-03</td>
+                <td>18:30:00</td>
+                <td><span class="status completed">Completed</span></td>
+                <td>
+                  <form class="assignForm">
+                    <input type="hidden" name="repair_id" value="8">
+                    <select name="mechanic_id" required>
+                      <option value="">Select Mechanic</option>
+                                              <option value="4" selected>
+                          Mechanic 1 Mechanic 1                        </option>
+                                          </select>
+                    <button type="submit" class="btn-assign"><i class="fas fa-check"></i></button>
+                  </form>
+                </td>
+              </tr>
+                          <tr>
+                <td>FRED ANTHONY GALLANO</td>
+                <td>N/A</td>
+                <td>Emergency Repair</td>
+                <td>2025-11-02</td>
+                <td></td>
+                <td><span class="status completed">Completed</span></td>
+                <td>
+                  <form class="assignForm">
+                    <input type="hidden" name="repair_id" value="7">
+                    <select name="mechanic_id" required>
+                      <option value="">Select Mechanic</option>
+                                              <option value="4" selected>
+                          Mechanic 1 Mechanic 1                        </option>
+                                          </select>
+                    <button type="submit" class="btn-assign"><i class="fas fa-check"></i></button>
+                  </form>
+                </td>
+              </tr>
+                          <tr>
+                <td>FRED ANTHONY GALLANO</td>
+                <td>N/A</td>
+                <td>Emergency Repair</td>
+                <td>2025-11-02</td>
+                <td></td>
+                <td><span class="status completed">Completed</span></td>
+                <td>
+                  <form class="assignForm">
+                    <input type="hidden" name="repair_id" value="6">
+                    <select name="mechanic_id" required>
+                      <option value="">Select Mechanic</option>
+                                              <option value="4" selected>
+                          Mechanic 1 Mechanic 1                        </option>
+                                          </select>
+                    <button type="submit" class="btn-assign"><i class="fas fa-check"></i></button>
+                  </form>
+                </td>
+              </tr>
+                          <tr>
+                <td>FRED ANTHONY GALLANO</td>
+                <td>N/A</td>
+                <td>Emergency Repair</td>
+                <td>2025-11-02</td>
+                <td></td>
+                <td><span class="status completed">Completed</span></td>
+                <td>
+                  <form class="assignForm">
+                    <input type="hidden" name="repair_id" value="5">
+                    <select name="mechanic_id" required>
+                      <option value="">Select Mechanic</option>
+                                              <option value="4" selected>
+                          Mechanic 1 Mechanic 1                        </option>
+                                          </select>
+                    <button type="submit" class="btn-assign"><i class="fas fa-check"></i></button>
+                  </form>
+                </td>
+              </tr>
+                          <tr>
+                <td>FRED ANTHONY GALLANO</td>
+                <td>Ducate</td>
+                <td>engine</td>
+                <td>2025-11-01</td>
+                <td>22:00:00</td>
+                <td><span class="status in progress">In Progress</span></td>
+                <td>
+                  <form class="assignForm">
+                    <input type="hidden" name="repair_id" value="4">
+                    <select name="mechanic_id" required>
+                      <option value="">Select Mechanic</option>
+                                              <option value="4" selected>
+                          Mechanic 1 Mechanic 1                        </option>
+                                          </select>
+                    <button type="submit" class="btn-assign"><i class="fas fa-check"></i></button>
+                  </form>
+                </td>
+              </tr>
+                          <tr>
+                <td>FRED ANTHONY GALLANO</td>
+                <td>Mio</td>
+                <td>maintenance</td>
+                <td>2025-11-02</td>
+                <td>10:30:00</td>
+                <td><span class="status completed">Completed</span></td>
+                <td>
+                  <form class="assignForm">
+                    <input type="hidden" name="repair_id" value="3">
+                    <select name="mechanic_id" required>
+                      <option value="">Select Mechanic</option>
+                                              <option value="4" selected>
+                          Mechanic 1 Mechanic 1                        </option>
+                                          </select>
+                    <button type="submit" class="btn-assign"><i class="fas fa-check"></i></button>
+                  </form>
+                </td>
+              </tr>
+                          <tr>
+                <td>FRED ANTHONY GALLANO</td>
+                <td>Yamaha</td>
+                <td>electrical</td>
+                <td>2025-11-01</td>
+                <td>07:30:00</td>
+                <td><span class="status in progress">In Progress</span></td>
+                <td>
+                  <form class="assignForm">
+                    <input type="hidden" name="repair_id" value="2">
+                    <select name="mechanic_id" required>
+                      <option value="">Select Mechanic</option>
+                                              <option value="4" selected>
+                          Mechanic 1 Mechanic 1                        </option>
+                                          </select>
+                    <button type="submit" class="btn-assign"><i class="fas fa-check"></i></button>
+                  </form>
+                </td>
+              </tr>
+                              </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+  // Dropdown animation
+  document.querySelectorAll('.dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('active');
+      const content = btn.nextElementSibling;
+      content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+    });
+  });
+
+  // Assign mechanic via AJAX
+  document.querySelectorAll('.assignForm').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      const response = await fetch('../backend/assign.html', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.json();
+
+      Swal.fire({
+        icon: result.status,
+        title: result.status === 'success' ? 'Assigned!' : 'Error!',
+        text: result.message,
+        confirmButtonColor: '#1e40af'
+      }).then(() => {
+        if (result.status === 'success') location.reload();
+      });
+    });
+  });
+  </script>
+
+<script src="../demo.js"></script>
+</body>
+</html>

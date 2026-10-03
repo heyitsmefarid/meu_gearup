@@ -56,10 +56,10 @@
           </div>
 
           <div class="cta-wrapper mt-5 d-flex gap-3" data-aos="fade-up" data-aos-delay="600">
-            <a href="services.html" class="btn btn-primary rounded-pill px-4 py-2 d-flex align-items-center gap-2">
+            <a href="#services" class="btn btn-primary rounded-pill px-4 py-2 d-flex align-items-center gap-2">
               <i class="bi bi-bicycle"></i> Explore Our Services
             </a>
-            <a href="contact.html" class="btn btn-outline-dark rounded-pill px-4 py-2 d-flex align-items-center gap-2">
+            <a href="#contact" class="btn btn-outline-dark rounded-pill px-4 py-2 d-flex align-items-center gap-2">
               <i class="bi bi-envelope"></i> Contact Us
             </a>
           </div>

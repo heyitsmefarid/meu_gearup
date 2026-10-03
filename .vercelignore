@@ -1,0 +1,5 @@
+# Only the static demo is uploaded (built by build_static.py). The PHP source,
+# including the email password in register.php, stays on your computer.
+/*
+!/dist
+!/vercel.json

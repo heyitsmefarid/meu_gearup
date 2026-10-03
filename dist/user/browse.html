@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Parts | MEU GearUp</title>
+  <link rel="stylesheet" href="browse.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <i class="ri-motorbike-line"></i>
+      <span>MEU GearUp</span>
+    </div>
+   <nav class="menu">
+      <a href="index.html" ><i class="ri-dashboard-line"></i> Dashboard</a>
+       <a href="book.html"><i class="fa-solid fa-wrench"></i> Book Services</a>
+      <a href="browse.html"  class="active"><i class="ri-shopping-bag-3-line"></i> Browse Parts</a>
+      <a href="repairs.html"><i class="ri-tools-line"></i> My Repairs</a>
+      <a href="emergency.html"><i class="ri-map-pin-line"></i> Roadside Request</a>
+        <a href="inquiry.html"><i class="ri-message-3-line"></i> Inquiries</a>
+      <a href="profile.html"><i class="ri-user-line"></i> Profile</a>
+      <a href="logout.html"><i class="ri-logout-box-line"></i> Logout</a>
+    </nav>
+    <div class="theme-toggle">
+      <i class="ri-sun-line" id="lightIcon"></i>
+      <i class="ri-moon-line" id="darkIcon"></i>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="topbar fade-in">
+      <div class="welcome">
+        <h2>Browse Motorcycle Parts 🏍️</h2>
+        <p>Explore top-quality parts and accessories for your ride.</p>
+      </div>
+      <div class="search-bar">
+        <input type="text" id="search" placeholder="Search for parts...">
+        <i class="ri-search-line"></i>
+      </div>
+    </header>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar fade-up">
+      <select id="categoryFilter">
+        <option value="">All Categories</option>
+        <option value="engine">Engine</option>
+        <option value="brakes">Brakes</option>
+        <option value="tires">Tires</option>
+        <option value="accessories">Accessories</option>
+      </select>
+
+      <select id="sortFilter">
+        <option value="default">Sort by</option>
+        <option value="priceLow">Price: Low to High</option>
+        <option value="priceHigh">Price: High to Low</option>
+        <option value="latest">Latest</option>
+      </select>
+    </div>
+
+    <!-- Product Grid -->
+    <section class="product-grid">
+      <!-- Example product -->
+      <div class="product-card fade-up delay-1">
+        <img src="https://images.unsplash.com/photo-1622634648470-8fc9d7bba7dc?w=500" alt="Brake Pads">
+        <h3>Yamaha Brake Pads</h3>
+        <p>Durable and high-performance braking.</p>
+        <div class="price">₱2,500</div>
+        <button class="btn-buy"><i class="ri-shopping-cart-line"></i> Add to Cart</button>
+      </div>
+
+      <div class="product-card fade-up delay-2">
+        <img src="https://images.unsplash.com/photo-1580656570954-8b6b3f0f9c08?w=500" alt="Helmet">
+        <h3>Full-Face Helmet</h3>
+        <p>Comfort and safety in every ride.</p>
+        <div class="price">₱3,900</div>
+        <button class="btn-buy"><i class="ri-shopping-cart-line"></i> Add to Cart</button>
+      </div>
+
+      <div class="product-card fade-up delay-3">
+        <img src="https://images.unsplash.com/photo-1611967163979-375d79f9f6f8?w=500" alt="Chain Set">
+        <h3>Chain & Sprocket Set</h3>
+        <p>Premium performance upgrade.</p>
+        <div class="price">₱1,750</div>
+        <button class="btn-buy"><i class="ri-shopping-cart-line"></i> Add to Cart</button>
+      </div>
+
+      <div class="product-card fade-up delay-4">
+        <img src="https://images.unsplash.com/photo-1617789058058-0b90f5381f7a?w=500" alt="Exhaust">
+        <h3>Performance Exhaust</h3>
+        <p>Enhance sound and efficiency.</p>
+        <div class="price">₱6,500</div>
+        <button class="btn-buy"><i class="ri-shopping-cart-line"></i> Add to Cart</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Script -->
+  <script>
+    const body = document.body;
+    const lightIcon = document.getElementById('lightIcon');
+    const darkIcon = document.getElementById('darkIcon');
+
+    // Theme toggle
+    lightIcon.addEventListener('click', () => body.classList.add('dark'));
+    darkIcon.addEventListener('click', () => body.classList.remove('dark'));
+
+    // Search filter
+    document.getElementById('search').addEventListener('input', e => {
+      const query = e.target.value.toLowerCase();
+      document.querySelectorAll('.product-card').forEach(card => {
+        const match = card.querySelector('h3').textContent.toLowerCase().includes(query);
+        card.style.display = match ? 'block' : 'none';
+      });
+    });
+  </script>
+<script src="../demo.js"></script>
+</body>
+</html>

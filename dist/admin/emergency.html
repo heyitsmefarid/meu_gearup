@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergency Requests | Admin</title>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="branch.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    .map-iframe { width: 100%; height: 220px; border: none; border-radius: 10px; }
+    .assign-btn { background: #007bff; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; }
+    .assign-btn:hover { background: #0056b3; }
+    .status-badge { padding: 4px 10px; border-radius: 6px; color: white; font-weight: 600; }
+    .Pending { background: #ff9800; }
+    .In\ Progress { background: #2196f3; }
+    .Resolved { background: #4caf50; }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <i class="fas fa-tools"></i>
+      <span>MEU Admin</span>
+    </div>
+
+   <nav class="menu">
+      <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+
+      <!-- Multi-Branch Control Panel -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-building"></i> Multi-Branch Control <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="view.html">View All Branches</a>
+         
+          <a href="performance.html">View Branch Performance</a>
+        </div>
+      </div>
+
+      <!-- Manage Users -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-users"></i> Manage Users <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="user.html">View User Details</a>
+          <a href="roles.html">Manage Roles (Supplier, Mechanic)</a>
+        </div>
+      </div>
+
+      <!-- Manage Inventory -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-boxes-stacked"></i> Manage Inventory <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="items.html">Add / Update / Delete Items</a>
+          <a href="stock.html">View Stock Levels (per Branch)</a>
+          <a href="transfer.html">Transfer Items Between Branches</a>
+        </div>
+      </div>
+
+      <!-- Assign Requests -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-tasks"></i> Assign Requests <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="suppliers.html">Assign to Suppliers (Parts / Materials)</a>
+          <a href="mechanics.html">Assign to Mechanics (Repair / Maintenance)</a>
+        </div>
+      </div>
+
+      <!-- Monitor Progress -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-chart-line"></i> Monitor Progress <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="updates.html">View Supplier Updates</a>
+          <a href="rewards.html">View Mechanic Reports</a>
+        </div>
+      </div>
+
+      <!-- POS -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-cash-register"></i> Point of Sale (POS) <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="branch_sales.html">Sales (per Branch)</a>
+          <a href="transactions.html">View Transactions / Receipts</a>
+          <a href="payments.html">Manage Discounts / Payments</a>
+          <a href="summary.html">Daily Sales Summary</a>
+        </div>
+      </div>
+
+      <!-- Reports & Analytics -->
+      <div class="dropdown">
+        <button class="dropdown-btn"><i class="fas fa-chart-pie"></i> Reports & Analytics <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown-content">
+          <a href="inventory.html">Inventory Reports (per Branch / Overall)</a>
+          <a href="task.html">Task Completion Reports</a>
+          <a href="activity_logs.html">User Activity Logs</a>
+          <a href="mechanics_report.html">Mechanics Repair Reports</a>
+          <a href="sales_report.html">Sales Reports (Branch / Consolidated)</a>
+        </div>
+      </div>
+  <a href="response.html"><i class="fas fa-envelope"></i> Inquiries</a>
+      <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      <br>
+      <br>
+      <br>
+      <br>
+  </nav>
+  </aside>
+  <!-- Main Content -->
+  <main class="main-content fade-up">
+    <div class="topbar">
+      <h2><i class="ri-alert-line"></i> Emergency Requests</h2>
+    </div>
+
+    <section class="dashboard-section fade-in">
+                        <div class="card fade-in">
+            <h3><i class="ri-error-warning-line"></i> Request #6 
+              <span class="status-badge Assigned">Assigned</span>
+            </h3>
+            <p><strong>Reported by:</strong> Fred Gallano</p>
+            <p><strong>Issue:</strong> hello need help</p>
+            <p><strong>Location:</strong> Lat: 13.3376, Lon: 121.1986</p>
+                          <iframe class="map-iframe"
+                src="https://maps.google.com/maps?q=13.337648,121.198560&z=15&output=embed">
+              </iframe>
+            
+                          <p><strong>Status:</strong> Assigned</p>
+                      </div>
+                  <div class="card fade-in">
+            <h3><i class="ri-error-warning-line"></i> Request #5 
+              <span class="status-badge Assigned">Assigned</span>
+            </h3>
+            <p><strong>Reported by:</strong> FRED ANTHONY GALLANO</p>
+            <p><strong>Issue:</strong> 555333</p>
+            <p><strong>Location:</strong> Lat: 13.3376, Lon: 121.1986</p>
+                          <iframe class="map-iframe"
+                src="https://maps.google.com/maps?q=13.337648,121.198560&z=15&output=embed">
+              </iframe>
+            
+                          <p><strong>Status:</strong> Assigned</p>
+                      </div>
+                  <div class="card fade-in">
+            <h3><i class="ri-error-warning-line"></i> Request #4 
+              <span class="status-badge In\ Progress">In Progress</span>
+            </h3>
+            <p><strong>Reported by:</strong> Mechanic 1 Mechanic 1</p>
+            <p><strong>Issue:</strong> helppppppp</p>
+            <p><strong>Location:</strong> Lat: 13.3376, Lon: 121.1986</p>
+                          <iframe class="map-iframe"
+                src="https://maps.google.com/maps?q=13.337648,121.198560&z=15&output=embed">
+              </iframe>
+            
+                          <p><strong>Status:</strong> In Progress</p>
+                      </div>
+                  <div class="card fade-in">
+            <h3><i class="ri-error-warning-line"></i> Request #3 
+              <span class="status-badge In\ Progress">In Progress</span>
+            </h3>
+            <p><strong>Reported by:</strong> FRED ANTHONY GALLANO</p>
+            <p><strong>Issue:</strong> heyyyyy</p>
+            <p><strong>Location:</strong> Lat: 13.3376, Lon: 121.1987</p>
+                          <iframe class="map-iframe"
+                src="https://maps.google.com/maps?q=13.337590,121.198670&z=15&output=embed">
+              </iframe>
+            
+                          <p><strong>Status:</strong> In Progress</p>
+                      </div>
+                  <div class="card fade-in">
+            <h3><i class="ri-error-warning-line"></i> Request #2 
+              <span class="status-badge Assigned">Assigned</span>
+            </h3>
+            <p><strong>Reported by:</strong> FRED ANTHONY GALLANO</p>
+            <p><strong>Issue:</strong> sssssssss</p>
+            <p><strong>Location:</strong> Lat: 13.3376, Lon: 121.1986</p>
+                          <iframe class="map-iframe"
+                src="https://maps.google.com/maps?q=13.337648,121.198560&z=15&output=embed">
+              </iframe>
+            
+                          <p><strong>Status:</strong> Assigned</p>
+                      </div>
+                  <div class="card fade-in">
+            <h3><i class="ri-error-warning-line"></i> Request #1 
+              <span class="status-badge Assigned">Assigned</span>
+            </h3>
+            <p><strong>Reported by:</strong> FRED ANTHONY GALLANO</p>
+            <p><strong>Issue:</strong> na flat boss</p>
+            <p><strong>Location:</strong> Lat: 13.3376, Lon: 121.1987</p>
+                          <iframe class="map-iframe"
+                src="https://maps.google.com/maps?q=13.337590,121.198670&z=15&output=embed">
+              </iframe>
+            
+                          <p><strong>Status:</strong> Assigned</p>
+                      </div>
+                  </section>
+  </main>
+
+  <script>
+  // Assign Mechanic via AJAX
+    document.querySelectorAll('.dropdown-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        button.classList.toggle('active');
+        const dropdownContent = button.nextElementSibling;
+        dropdownContent.style.maxHeight = dropdownContent.style.maxHeight ? null : dropdownContent.scrollHeight + "px";
+      });
+    });
+  function assignMechanic(event, emergencyId) {
+    event.preventDefault();
+    const form = event.target;
+    const mechanicId = form.mechanic_id.value;
+
+    Swal.fire({
+      title: "Confirm Assignment",
+      text: "Assign this emergency to the selected mechanic?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Yes, assign",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch("../backend/assign_emergency.html", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: "emergency_id=" + emergencyId + "&mechanic_id=" + mechanicId
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            Swal.fire("Success!", "Mechanic assigned successfully.", "success")
+              .then(() => location.reload());
+          } else {
+            Swal.fire("Error", data.message || "Failed to assign.", "error");
+          }
+        });
+      }
+    });
+  }
+  </script>
+<script src="../demo.js"></script>
+</body>
+</html>

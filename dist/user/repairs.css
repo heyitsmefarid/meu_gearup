@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+  color: #1e293b;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #1e3a8a, #2563eb);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  height: 100%;
+  padding: 25px;
+}
+
+.sidebar .logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.sidebar .logo i {
+  margin-right: 10px;
+  font-size: 1.8rem;
+  animation: rotateIcon 6s linear infinite;
+}
+
+@keyframes rotateIcon {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+.sidebar .menu a {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  margin: 6px 0;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.sidebar .menu a:hover,
+.sidebar .menu a.active {
+  background: rgba(255,255,255,0.2);
+  transform: translateX(5px);
+}
+
+.sidebar .menu a i {
+  margin-right: 10px;
+  font-size: 1.4rem;
+}
+
+.theme-toggle {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.theme-toggle i {
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.theme-toggle i:hover {
+  transform: scale(1.2);
+}
+
+/* Main */
+.main-content {
+  margin-left: 260px;
+  padding: 30px;
+  flex: 1;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.topbar h2 span {
+  color: #2563eb;
+}
+
+.avatar img {
+  border-radius: 50%;
+  width: 60px;
+  border: 3px solid #2563eb;
+  transition: 0.3s ease;
+}
+
+.avatar img:hover {
+  transform: rotate(10deg);
+}
+
+/* Repairs Section */
+.repairs-section {
+  background: rgba(255,255,255,0.75);
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  backdrop-filter: blur(8px);
+}
+
+.repairs-section h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #64748b;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.repairs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.repair-card {
+  background: rgba(255,255,255,0.8);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.repair-card:hover {
+  transform: translateY(-6px);
+}
+
+.repair-card .icon {
+  font-size: 2rem;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+.repair-card h4 {
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.repair-card p {
+  font-size: 0.9rem;
+  color: #475569;
+  margin: 4px 0;
+}
+
+.status.completed {
+  display: inline-block;
+  background: #d1fae5;
+  color: #065f46;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+
+/* Animations */
+.fade-in { animation: fadeIn 1s ease forwards; opacity: 0; }
+.fade-up { animation: fadeUp 1s ease forwards; opacity: 0; transform: translateY(20px); }
+
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+/* Dark Mode */
+body.dark {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #f1f5f9;
+}
+
+body.dark .sidebar {
+  background: linear-gradient(180deg, #0f172a, #1e3a8a);
+}
+
+body.dark .sidebar .menu a {
+  color: #cbd5e1;
+}
+
+body.dark .repairs-section {
+  background: rgba(30, 41, 59, 0.8);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+body.dark .repair-card {
+  background: rgba(51, 65, 85, 0.85);
+  color: #f1f5f9;
+}
+
+body.dark .repair-card p {
+  color: #cbd5e1;
+}
+
+body.dark .status.completed {
+  background: #064e3b;
+  color: #a7f3d0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: -260px;
+  }
+  .sidebar.open {
+    left: 0;
+  }
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

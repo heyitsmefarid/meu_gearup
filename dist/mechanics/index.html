@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mechanic Dashboard | MEU GearUp</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <div class="logo">
+             <i class="ri-motorbike-line"></i>
+      <span>MEU GearUp</span>
+        </div>
+
+      <nav class="menu">
+        <a href="index.html" class="active"><i class="ri-dashboard-line"></i> Dashboard</a>
+        <a href="jobs.html"><i class="ri-settings-2-line"></i> Assigned Jobs</a>
+        <a href="repairs.html"><i class="ri-tools-line"></i> Ongoing Repairs</a>
+        <a href="completed.html"><i class="ri-check-double-line"></i> Completed Tasks</a>
+      
+        <a href="logout.html"><i class="ri-logout-box-line"></i> Logout</a>
+      </nav>
+    </div>
+
+  
+  </aside>
+
+  <!-- Main Content -->
+  <!-- Main Content -->
+  <main class="main-content fade-up">
+    <div class="topbar fade-in">
+      <h2>Welcome back, <span>Mechanic 1</span> 👋</h2>
+     
+    </div>
+
+    <!-- Overview Section -->
+    <section class="dashboard">
+      <div class="section-header">
+        <h3><i class="ri-dashboard-line"></i> Dashboard Overview</h3>
+        <p class="subtitle">Here’s an overview of your mechanic activities and system insights.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="dashboard-card fade-in delay-1">
+          <div class="icon-circle blue"><i class="ri-tools-fill"></i></div>
+          <div class="card-info">
+            <h4>Active Repairs</h4>
+            <p class="stat-number">2</p>
+          </div>
+        </div>
+
+        <div class="dashboard-card fade-in delay-2">
+          <div class="icon-circle yellow"><i class="ri-time-line"></i></div>
+          <div class="card-info">
+            <h4>Pending Jobs</h4>
+            <p class="stat-number">0</p>
+          </div>
+        </div>
+
+        <div class="dashboard-card fade-in delay-3">
+          <div class="icon-circle green"><i class="ri-checkbox-circle-line"></i></div>
+          <div class="card-info">
+            <h4>Completed Services</h4>
+            <p class="stat-number">6</p>
+          </div>
+        </div>
+
+        <div class="dashboard-card fade-in delay-4">
+          <div class="icon-circle purple"><i class="ri-briefcase-line"></i></div>
+          <div class="card-info">
+            <h4>Total Assigned</h4>
+            <p class="stat-number">8</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mechanic Info -->
+    <section class="info-section fade-up">
+      <h3 class="section-title"><i class="ri-user-settings-line"></i> Your Information</h3>
+      <div class="info-card fade-in">
+        <div class="info-content">
+          <p><strong>Name:</strong> Mechanic 1 Mechanic 1</p>
+          <p><strong>Email:</strong> mechanic1@gmail.com</p>
+          <p><strong>Role:</strong> Mechanic</p>
+        </div>
+        <div class="gear-illustration">
+          <i class="ri-settings-5-fill rotating"></i>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- Dark Mode Toggle -->
+  <script>
+  (function(){
+    const themeToggle = document.querySelector('.theme-toggle');
+    const sun = document.getElementById('theme-sun');
+    const moon = document.getElementById('theme-moon');
+    const body = document.body;
+    const STORAGE_KEY = 'meu_theme';
+
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if(saved === 'dark') body.classList.add('dark');
+
+    const updateIcons = () => {
+      sun.style.opacity = body.classList.contains('dark') ? '1' : '0.4';
+      moon.style.opacity = body.classList.contains('dark') ? '0.4' : '1';
+    };
+    updateIcons();
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      localStorage.setItem(STORAGE_KEY, body.classList.contains('dark') ? 'dark' : 'light');
+      updateIcons();
+    });
+  })();
+  </script>
+<script src="../demo.js"></script>
+</body>
+</html>
